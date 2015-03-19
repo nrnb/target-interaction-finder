@@ -7,12 +7,11 @@ import networkxgmml
 import json
 
 def _main():
-    parser = argparse.ArgumentParser(description="Read network from Cytoscape")
-    #parser.add_argument('XGMML', default=file('../input/mappings/mirtarbase-hsa-4.4.xgmml'), help='XGMML file exported from Cytoscape  default: %(default)s', nargs='?', type=argparse.FileType('r'))
-    #parser.add_argument('XGMML', default=file('../output/test1/test1_mirtarbase.xgmml'), help='XGMML file exported from Cytoscape  default: %(default)s', nargs='?', type=argparse.FileType('r'))
-    parser.add_argument('XGMML', default=file('./sample.xgmml'), help='XGMML file exported from Cytoscape  default: %(default)s', nargs='?', type=argparse.FileType('r'))
-    parser.add_argument('edgelist', default='./output/mirtarbase-edgelist.txt', nargs='?', help='edge list output path  [default: %(default)s]')
-    parser.add_argument('nodelist', default='./output/mirtarbase-nodelist.txt', nargs='?', help='node list output path  [default: %(default)s]')
+    parser = argparse.ArgumentParser(description="Read network from mirtarbase-sample")
+    #parser.add_argument('XGMML', default=file('../tests/test1/output-expected/test1_mirtarbase.xgmml'), help='XGMML file exported from Cytoscape  default: %(default)s', nargs='?', type=argparse.FileType('r'))
+    parser.add_argument('XGMML', default=file('../miRNA-protein-mappings/mirtarbase-hsa-4.4.xgmml'), help='XGMML file exported from Cytoscape  default: %(default)s', nargs='?', type=argparse.FileType('r'))
+    parser.add_argument('edgelist', default='../tests/test1/output-actual/mirtarbase-sample-edgelist.txt', nargs='?', help='edge list output path  [default: %(default)s]')
+    parser.add_argument('nodelist', default='../tests/test1/output-actual/mirtarbase-sample-nodelist.txt', nargs='?', help='node list output path  [default: %(default)s]')
     options = parser.parse_args()
 
     g = networkxgmml.XGMMLReader(options.XGMML)
@@ -28,6 +27,7 @@ def _main():
     with file(options.nodelist, 'w') as f:
         for onenode in g.nodes():
             print >>f, '\t'.join([onenode, json.dumps(g.node[onenode])])
+            #print g.neighbors(onenode)
 
 
     print 'node list is exported to {0}'.format(options.nodelist)
@@ -35,4 +35,3 @@ def _main():
 
 if __name__ == '__main__':
     _main()
-
