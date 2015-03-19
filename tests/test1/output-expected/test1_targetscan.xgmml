@@ -92,3 +92,4 @@
     <att label="interactionType" name="interactionType" value="microRNA-target" type="string" />
     <att label="datasource" name="datasource" value="TargetScan version 6.2" type="string" />
   </edge>
+</graph>
