@@ -9,17 +9,13 @@ import networkxgmml
 from parse_rna_list import Parse_RNA_List
 from parse_xgmml import Parse_XGMML
 from parse_bridgedb_datasources import Parse_BridgeDb_Datasources
-import re
+import regexes
 
 def _main():
     miriam_ns_list = Parse_BridgeDb_Datasources()
     print 'miriam_ns_list'
     print miriam_ns_list
     test_name = 'test3'
-
-    identifier_pattern = re.compile('^(MIMAT\d{7})|(MI\d{7})$')
-
-    combined_graph = nx.Graph()
 
     rna_list_file_path = '../tests/' + test_name + '/input/rna-list-' + test_name + '.txt'
     rna_list_column_index = 0
@@ -32,29 +28,31 @@ def _main():
     logfile_path = '../tests/' + test_name + '/output-actual/' + test_name + '.log';
     open(logfile_path, 'w').close()
 
-
     log_result = dict()
-    log_result['query_count'] = 0
     log_result['total_result_count'] = 0
     log_result['skipped_count'] = 0
+    log_result['results_by_source'] = {}
 
     mirna_protein_mapping_file_paths = [
-        #'../miRNA-protein-mappings/microcosm-hsa-2012-12-05.xgmml',
+        '../miRNA-protein-mappings/microcosm-hsa-2012-12-05.xgmml',
         '../miRNA-protein-mappings/mirtarbase-hsa-4.4.xgmml',
         '../miRNA-protein-mappings/targetscan-hsa-2012-12-05.xgmml'
     ]
 
+    versions = []
+
+    rna_list = Parse_RNA_List(rna_list_file_path, rna_list_column_index)
+    log_result['query_count'] = len(rna_list)
+
     for mirna_protein_mapping_file_path in mirna_protein_mapping_file_paths:
         mirna_protein_mapping_file_path_components = mirna_protein_mapping_file_path.split('/')
         version = mirna_protein_mapping_file_path_components[len(mirna_protein_mapping_file_path_components) - 1].replace('.xgmml', '')
+        versions.append(version)
+
         current_mapping_graph = Parse_XGMML(mirna_protein_mapping_file_path)
         log_result[version + '_result_count'] = 0
 
-        rna_list = Parse_RNA_List(rna_list_file_path, rna_list_column_index)
-
         datasource_subgraph_node_ids = []
-
-        log_result['query_count'] += len(rna_list)
 
         name_to_identifier_mappings={}
 
@@ -66,15 +64,14 @@ def _main():
             else:
                 if ('name' in result):
                     fuzzy_id = result['name']
-                    print 'Warning: It is safest to provide an identifier as per identifiers.org.'
-                    print 'Attempting to convert "' + fuzzy_id + '"...'
+                    print 'Warning: It is safest to provide a Miriam/identifiers.org identifier.'
                     print ''
                 else:
                     raise ValueError('No name (hsa-miR-542-3p) or identifier (MIMAT0003389) provided.')
 
             if not (current_mapping_graph.has_node(fuzzy_id)):
                 matching_node_graphid = None
-                print 'Warning: Target mapping XGMML does identify nodes using identifiers as per identifiers.org.'
+                print 'Warning: Provided mapping XGMML file does not identify nodes using Miriam/identifiers.org identifiers.'
                 print ''
                 current_graph_id = ''
                 for onenode in current_mapping_graph.nodes():
@@ -99,7 +96,7 @@ def _main():
                     fuzzy_id = matching_node_graphid
 
             if fuzzy_id:
-                if identifier_pattern.match(fuzzy_id):
+                if regexes.mirbase_identifier.match(fuzzy_id):
                     identifier = fuzzy_id
                 else:
                     matching_node = current_mapping_graph.node[fuzzy_id]
@@ -109,13 +106,14 @@ def _main():
                         if ('identifiers' in current_node):
                             identifiers = current_node['identifiers']
                             for current_identifier in identifiers:
-                                if identifier_pattern.match(current_identifier):
+                                if regexes.mirbase_identifier.match(current_identifier):
                                     identifier = current_identifier
                                     break
 
                         if not identifier:
-                            print 'Could not convert provided name/id.'
+                            print 'Could not convert provided name/id to Miriam/identifiers.org identifier.'
                             print ''
+                            identifier = fuzzy_id
                             #raise ValueError('Could not convert provided name/id.')
 
                 if not identifier:
@@ -124,12 +122,11 @@ def _main():
                     print fuzzy_id
                     print ''
                 else:
+                    # TODO handle other namespaces.
                     if (fuzzy_id != identifier):
                         print 'adding to mappings'
                         print 'fuzzy_id'
                         print fuzzy_id
-                        print 'identifier'
-                        print identifier
                         name_to_identifier_mappings[fuzzy_id] = identifier
 
                     print ''
@@ -146,14 +143,30 @@ def _main():
                     '''
 
                     '''
+                    # Normalize target(s) to use Ensembl
+                    # TODO it's thinking both ensembl and entrez match -- not working
                     for neighbor_fuzzy_id in neighbor_fuzzy_ids:
-                        print current_mapping_graph.node[neighbor_fuzzy_id]
+                        current_neighbor_identifier = None
+                        current_neighbor_node = current_mapping_graph.node[neighbor_fuzzy_id]
+                        if regexes.ensembl_identifier.match(neighbor_fuzzy_id) and (not regexes.ncbigene_identifier.match(neighbor_fuzzy_id)):
+                            current_neighbor_identifier = neighbor_fuzzy_id
+                        else:
+                            if 'identifiers' in current_neighbor_node:
+                                for current_neighbor_identifier in current_neighbor_node['identifiers']:
+                                    if regexes.ensembl_identifier.match(current_neighbor_identifier) and (not regexes.ncbigene_identifier.match(current_neighbor_identifier)):
+                                        current_neighbor_identifier = current_neighbor_identifier
+                                        break
+                        if current_neighbor_identifier:
+                            name_to_identifier_mappings[neighbor_fuzzy_id] = current_neighbor_identifier
                     '''
-                    print ''
 
+                    if not identifier in log_result['results_by_source']:
+                        log_result['results_by_source'][identifier] = {}
+                    log_result['results_by_source'][identifier][version] = len(neighbor_fuzzy_ids)
+
+                    log_result['total_result_count'] += len(neighbor_fuzzy_ids)
 
                     log_result[version + '_result_count'] += len(neighbor_fuzzy_ids)
-                    log_result['total_result_count'] += len(neighbor_fuzzy_ids)
 
                     item_subgraph_node_ids = neighbor_fuzzy_ids
                     item_subgraph_node_ids.append(fuzzy_id)
@@ -184,173 +197,83 @@ def _main():
         output_xgmml_file_path = '../tests/' + test_name + '/output-actual/' + version + '-results.xgmml';
         output_xgmml = open(output_xgmml_file_path, 'w')
         networkxgmml.XGMMLWriter(output_xgmml, datasource_subgraph, version + 'subgraph')
-
-        if len(combined_graph.nodes()) > 0:
-            combined_graph = nx.compose(combined_graph, datasource_subgraph)
-        else:
-            combined_graph = datasource_subgraph
-
-        print ''
-        print ''
-        '''
-        print 'combined_graph nodes'
-        print combined_graph.nodes()
-        '''
-        print 'combined_graph edges'
-        print combined_graph.edges()
-        print ''
-        print ''
-
-    print ''
-    print ''
-    print 'combined_graph nodes final'
-    print combined_graph.nodes()
-    print 'combined_graph edges final'
-    print combined_graph.edges()
-    print ''
-    print ''
                 
-    '''
-    with file(results_file_path, 'a') as f:
-        for onenode in combined_graph.nodes():
-            subgraph_node = combined_graph.node[onenode]
-            row_value = [identifier, onenode]
+        ''' The resulting CSV file should look like this:
+        queryID	targetId	score	pvalue	pmid	datasource
+        hsa-miR-542-3p	332			20728447	miRTarBase_hsa_r4.4
+        '''
 
-            if 'score' in subgraph_node:
-                row_value.append(subgraph_node['score'])
-            else:
-                row_value.append('')
+        with open(results_file_path, 'a') as csvfile:
+            csvwriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for oneedge in datasource_subgraph.edges(data=True):
+                print 'oneedge'
+                print oneedge
+                edge_attributes = oneedge[2]
+                print 'edge_attributes'
+                print edge_attributes
+                #row_value = [identifier, edge_attributes['Target Gene (Entrez ID)']]
+                row_value = [oneedge[0], oneedge[1]]
 
-            if 'pValue' in subgraph_node:
-                row_value.append(subgraph_node['pValue'])
-            else:
-                row_value.append('')
+                if 'score' in edge_attributes:
+                    row_value.append(edge_attributes['score'])
+                else:
+                    row_value.append('')
 
-            if 'References (PMID)' in subgraph_node:
-                row_value.append(subgraph_node['References (PMID)'])
-            else:
-                row_value.append('')
+                if 'pValue' in edge_attributes:
+                    row_value.append(edge_attributes['pValue'])
+                else:
+                    row_value.append('')
 
-            # TODO how do we get this?
-            row_value.append('datasource')
+                if 'References (PMID)' in edge_attributes:
+                    row_value.append(edge_attributes['References (PMID)'])
+                else:
+                    row_value.append('')
 
-            row_value.append(version)
+                '''
+                matching_miriam_ns = False
+                for miriam_ns in miriam_ns_list:
+                    if miriam_ns in edge_attributes:
+                        matching_miriam_ns = miriam_ns
 
-            print >>f, ','.join(row_value)
-    '''
+                if matching_miriam_ns:
+                    row_value.append(matching_miriam_ns)
+                else:
+                    row_value.append('')
+                '''
 
-    ''' The resulting CSV file should look like this:
-    queryID	targetId	score	pvalue	pmid	datasource
-    hsa-miR-542-3p	332			20728447	miRTarBase_hsa_r4.4
-    '''
+                if 'datasource' in edge_attributes:
+                    row_value.append(edge_attributes['datasource'])
+                else:
+                    row_value.append('')
 
-    with open(results_file_path, 'a') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for oneedge in combined_graph.edges(data=True):
-            print 'oneedge'
-            print oneedge
-            edge_attributes = oneedge[2]
-            print 'edge_attributes'
-            print edge_attributes
-            #row_value = [identifier, edge_attributes['Target Gene (Entrez ID)']]
-            row_value = [oneedge[0], oneedge[1]]
+                #row_value.append(version)
 
-            if 'score' in edge_attributes:
-                row_value.append(edge_attributes['score'])
-            else:
-                row_value.append('')
-
-            if 'pValue' in edge_attributes:
-                row_value.append(edge_attributes['pValue'])
-            else:
-                row_value.append('')
-
-            if 'References (PMID)' in edge_attributes:
-                row_value.append(edge_attributes['References (PMID)'])
-            else:
-                row_value.append('')
-
-            matching_miriam_ns = False
-            for miriam_ns in miriam_ns_list:
-                if miriam_ns in edge_attributes:
-                    matching_miriam_ns = miriam_ns
-
-            if matching_miriam_ns:
-                row_value.append(matching_miriam_ns)
-            else:
-                row_value.append('')
-            '''
-            '''
-
-            if 'datasource' in edge_attributes:
-                row_value.append(edge_attributes['datasource'])
-            else:
-                row_value.append('')
-
-            #row_value.append(version)
-
-            print 'row_value'
-            print row_value
-            csvwriter.writerow(row_value)
-
-    '''
-    with file(results_file_path, 'a') as f:
-        for oneedge in combined_graph.edges(data=True):
-            print 'oneedge'
-            print oneedge
-            edge_attributes = oneedge[2]
-            print 'edge_attributes'
-            print edge_attributes
-            #row_value = [identifier, edge_attributes['Target Gene (Entrez ID)']]
-            row_value = [oneedge[0], oneedge[1]]
-
-            if 'score' in edge_attributes:
-                row_value.append(edge_attributes['score'])
-            else:
-                row_value.append('')
-
-            if 'pValue' in edge_attributes:
-                row_value.append(edge_attributes['pValue'])
-            else:
-                row_value.append('')
-
-            if 'References (PMID)' in edge_attributes:
-                row_value.append(edge_attributes['References (PMID)'])
-            else:
-                row_value.append('')
-
-            if 'datasource' in edge_attributes:
-                row_value.append(edge_attributes['datasource'])
-            else:
-                row_value.append('')
-
-            #row_value.append(version)
-
-            print 'row_value'
-            print row_value
-
-            print >>f, ','.join(row_value)
-    '''
-
-    '''
-    print '# of edges', len(current_mapping_graph.edges())
-    with file(options.edgelist, 'w') as f:
-        for n1, n2 in current_mapping_graph.edges():
-            print >>f, '\t'.join([n1, n2, json.dumps(current_mapping_graph.edge[n1][n2])])
-
-    print 'edge list is exported to {0}'.format(options.edgelist)
-
-    print '# of nodes', len(current_mapping_graph.nodes())
-    with file(options.nodelist, 'w') as f:
-        for onenode in current_mapping_graph.nodes():
-            print >>f, '\t'.join([onenode, json.dumps(current_mapping_graph.node[onenode])])
-
-    print 'node list is exported to {0}'.format(options.nodelist)
-    '''
+                print 'row_value'
+                print row_value
+                csvwriter.writerow(row_value)
 
     print 'log_result'
     print log_result
+    with file(logfile_path, 'w') as f:
+        print >>f, '# Queried {} miRNA identifiers.'.format(log_result['query_count'])
+        print >>f, '# Skipped {} identifiers.'.format(log_result['skipped_count'])
+        print >>f, '# Found {} results.'.format(log_result['total_result_count'])
+        header = ['queryID'] + versions
+        print 'header'
+        print header
+        print >>f, '\t'.join(header)
+        for oneidentifier in log_result['results_by_source']:
+            row = [oneidentifier]
+            #for oneversion in log_result['results_by_source'][oneidentifier]:
+            for oneversion in versions:
+                if oneversion in log_result['results_by_source'][oneidentifier]:
+                    row.append(str(log_result['results_by_source'][oneidentifier][oneversion]))
+                else:
+                    row.append(str(0))
+            print 'row'
+            print row
+            print >>f, '\t'.join(row)
 
 if __name__ == '__main__':
     _main()
