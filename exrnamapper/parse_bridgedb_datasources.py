@@ -16,7 +16,6 @@ def Parse_BridgeDb_Datasources():
         dataset_list_reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
         for row in dataset_list_reader:
             miriam_ns = row[column_index]
-            print miriam_ns
             if miriam_pattern.match(miriam_ns):
                 dataset_name = miriam_ns.replace('urn:miriam:', '')
                 dataset_name_list.append(dataset_name)
