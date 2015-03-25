@@ -12,7 +12,7 @@ def main():
     #parser.add_argument('-i', '--input', help='input file path to miRNA list')
     parser.add_argument('-c', '--column', default=1, type=int, help='column number from input file that contains sourceIds (default = 1)')
     parser.add_argument('-t', '--type', default='rna', help='type of sourceIds (rna or protein; default = rna)')
-    parser.add_argument('-o', '--output', default='./', help='output dir path (default = current working directory)')
+    #parser.add_argument('-o', '--output', default='./', help='output dir path (default = current working directory)')
     args = parser.parse_args()
 
     rna_list_file_path = '../tests/test3/input/rna-list-test3.txt'
