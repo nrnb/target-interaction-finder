@@ -1,0 +1,10 @@
+queryid,targetid,score,pvalue,pmid,datasource
+332,hsa-miR-10a-5p,,,20371350,miRTarBase_hsa_r4.4
+332,hsa-miR-101-3p,,,20371350,miRTarBase_hsa_r4.4
+http://identifiers.org/ncbigene/3611,hsa-miR-145-5p,,,23104321,miRTarBase_hsa_r4.4
+332,hsa-miR-335-5p,,,23232114,miRTarBase_hsa_r4.4
+NF1,hsa-miR-370-3p,,,23077663,miRTarBase_hsa_r4.4
+332,hsa-miR-425-5p,,,20371350,miRTarBase_hsa_r4.4
+http://identifiers.org/ncbigene/3611,hsa-miR-542-3p,,,21860426,miRTarBase_hsa_r4.4
+332,hsa-miR-542-3p,,,20728447,miRTarBase_hsa_r4.4
+NF1,hsa-miR-10b-5p,,,20550523,miRTarBase_hsa_r4.4

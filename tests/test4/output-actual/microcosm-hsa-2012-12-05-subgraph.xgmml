@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<graph directed="1"  xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.cs.rpi.edu/XGMML">
+  <att name="selected" value="1" type="boolean" />
+  <att name="name" value="microcosm-hsa-2012-12-05-subgraph.xgmml" type="string"/>
+  <att name="shared name" value="microcosm-hsa-2012-12-05-subgraph.xgmml" type="string"/>
+  <node id="ENSG00000158711" label="ENSG00000158711">
+    <att name="name" value="ELK4" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="ensembl" value="ENSG00000158711" type="string" />
+    <att name="identifiers" type="list">
+      <att name="identifiers" value="ENSG00000158711" type="string" />
+      <att name="identifiers" value="2005" type="string" />
+      <att name="identifiers" value="Q8IXL1" type="string" />
+      <att name="identifiers" value="ELK4" type="string" />
+      <att name="identifiers" value="P28324" type="string" />
+    </att>
+    <att name="@label" value="ELK4" type="string" />
+    <att name="mimat id" value="MIMAT0004559" type="string" />
+  </node>
+  <node id="ZFP14" label="ENSG00000198440">
+    <att name="name" value="ZNF583" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="ensembl" value="ENSG00000198440" type="string" />
+    <att name="identifiers" type="list">
+      <att name="identifiers" value="ENSG00000198440" type="string" />
+      <att name="identifiers" value="147949" type="string" />
+      <att name="identifiers" value="ZNF583" type="string" />
+      <att name="identifiers" value="ZFP14" type="string" />
+      <att name="identifiers" value="Q96ND8" type="string" />
+      <att name="identifiers" value="Q9HCL3" type="string" />
+      <att name="identifiers" value="Q8NDQ6" type="string" />
+      <att name="identifiers" value="Q96SE7" type="string" />
+      <att name="identifiers" value="F5GZQ5" type="string" />
+      <att name="identifiers" value="ZNF540" type="string" />
+      <att name="identifiers" value="ZNF347" type="string" />
+    </att>
+    <att name="@label" value="ZNF583" type="string" />
+    <att name="mimat id" value="MIMAT0004658" type="string" />
+  </node>
+  <node id="332" label="ENSG00000089685">
+    <att name="name" value="BIRC5" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="ensembl" value="ENSG00000089685" type="string" />
+    <att name="identifiers" type="list">
+      <att name="identifiers" value="ENSG00000089685" type="string" />
+      <att name="identifiers" value="332" type="string" />
+      <att name="identifiers" value="A2SUH6" type="string" />
+      <att name="identifiers" value="O15392" type="string" />
+      <att name="identifiers" value="G8JLJ6" type="string" />
+      <att name="identifiers" value="A3E0Z5" type="string" />
+      <att name="identifiers" value="BIRC5" type="string" />
+      <att name="identifiers" value="A3E0Z4" type="string" />
+    </att>
+    <att name="@label" value="BIRC5" type="string" />
+    <att name="mimat id" value="MIMAT0004798" type="string" />
+  </node>
+  <node id="NF1" label="ENSG00000196712">
+    <att name="name" value="NF1" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="ensembl" value="ENSG00000196712" type="string" />
+    <att name="identifiers" type="list">
+      <att name="identifiers" value="ENSG00000196712" type="string" />
+      <att name="identifiers" value="4763" type="string" />
+      <att name="identifiers" value="Q9UMU3" type="string" />
+      <att name="identifiers" value="B4DXH1" type="string" />
+      <att name="identifiers" value="Q14931" type="string" />
+      <att name="identifiers" value="H0Y465" type="string" />
+      <att name="identifiers" value="NF1" type="string" />
+      <att name="identifiers" value="P21359" type="string" />
+      <att name="identifiers" value="H0UIC3" type="string" />
+      <att name="identifiers" value="Q4W6X4" type="string" />
+      <att name="identifiers" value="B4DXP1" type="string" />
+    </att>
+    <att name="@label" value="NF1" type="string" />
+    <att name="mimat id" value="MIMAT0002173" type="string" />
+  </node>
+  <node id="http://identifiers.org/ensembl/ENSG00000189292" label="ENSG00000189292">
+    <att name="name" value="NP_001002919.1" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="ensembl" value="ENSG00000189292" type="string" />
+    <att name="identifiers" type="list">
+      <att name="identifiers" value="ENSG00000189292" type="string" />
+      <att name="identifiers" value="285016" type="string" />
+      <att name="identifiers" value="FAM150B" type="string" />
+      <att name="identifiers" value="B5MCG6" type="string" />
+      <att name="identifiers" value="F5GX25" type="string" />
+      <att name="identifiers" value="H0Y3U4" type="string" />
+      <att name="identifiers" value="Q6UX46" type="string" />
+      <att name="identifiers" value="B5MC33" type="string" />
+    </att>
+    <att name="@label" value="NP_001002919.1" type="string" />
+    <att name="mimat id" value="MIMAT0003293" type="string" />
+  </node>
+  <node id="http://identifiers.org/ncbigene/3611" label="ENSG00000166333">
+    <att name="name" value="ILK" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="ensembl" value="ENSG00000166333" type="string" />
+    <att name="identifiers" type="list">
+      <att name="identifiers" value="ENSG00000166333" type="string" />
+      <att name="identifiers" value="3611" type="string" />
+      <att name="identifiers" value="E9PM54" type="string" />
+      <att name="identifiers" value="E9PNR4" type="string" />
+      <att name="identifiers" value="E9PQ52" type="string" />
+      <att name="identifiers" value="B7Z1I0" type="string" />
+      <att name="identifiers" value="B7Z418" type="string" />
+      <att name="identifiers" value="ILK" type="string" />
+      <att name="identifiers" value="Q13418" type="string" />
+      <att name="identifiers" value="E9PQ27" type="string" />
+    </att>
+    <att name="@label" value="ILK" type="string" />
+    <att name="mimat id" value="MIMAT0004798" type="string" />
+  </node>
+</graph>

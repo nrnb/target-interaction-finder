@@ -1,0 +1,9 @@
+http://identifiers.org/mirbase/MI0003188
+http://identifiers.org/mirbase.mature/MIMAT0003389
+hsa-miR-370-3p
+ENSG00000158711
+http://identifiers.org/ensembl/ENSG00000118194
+KIF14
+4724
+http://identifiers.org/ncbigene/143570
+TBC1D22B

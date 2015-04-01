@@ -1,0 +1,6 @@
+ENSG00000158711
+http://identifiers.org/ensembl/ENSG00000189292
+ZFP14
+332
+http://identifiers.org/ncbigene/3611
+NF1
