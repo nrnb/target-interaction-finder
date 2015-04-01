@@ -8,51 +8,56 @@ from os import listdir
 from os.path import isdir, isfile, join
 import networkx as nx
 import networkxgmml
-from parse_xgmml import Parse_XGMML
 from parse_bridgedb_datasources import Parse_BridgeDb_Datasources
 import re
 import regexes
 
-def get_file_paths(filelike_object, file_extension):
-    if hasattr(filelike_object, 'name'):
-        return filelike_object.name
-    else:
-        source_xgmml_file_paths = []
-        if os.path.isdir(filelike_object):
-            source_xgmml_file_paths += [ filelike_object + f for f in listdir(filelike_object) if isfile(join(filelike_object,f)) and has_file_extension(f, file_extension) ]
-        elif os.path.isfile(filelike_object):
-            source_xgmml_file_paths += [ filelike_object ]
+def TargetInteractionFinder(source_xgmml, node_ids=None, node_id_list_column_index=0, output_dir='./', debug=False):
+    def print_debug(message):
+        if debug:
+            print message
+
+    def get_file_paths(filelike_object, file_extension):
+        if hasattr(filelike_object, 'name'):
+            return filelike_object.name
         else:
-            print filelike_object
-            raise ValueError('File or directory input error.')
+            source_xgmml_file_paths = []
+            if os.path.isdir(filelike_object):
+                source_xgmml_file_paths += [ filelike_object + f for f in listdir(filelike_object) if isfile(join(filelike_object,f)) and has_file_extension(f, file_extension) ]
+            elif os.path.isfile(filelike_object):
+                source_xgmml_file_paths += [ filelike_object ]
+            else:
+                print filelike_object
+                raise ValueError('File or directory input error.')
 
-        return source_xgmml_file_paths
-
-
-def has_file_extension(filename, file_extension):
-    expected_index = len(filename) - len(file_extension)
-    return filename.find(file_extension, expected_index, len(filename)) == expected_index
-
-
-def has_matching_node(current_mapping_graph, node_id):
-    verified_node_id = None
-    if current_mapping_graph.has_node(node_id):
-        verified_node_id = node_id
-    else:
-        for onenode in current_mapping_graph.nodes():
-            current_node = current_mapping_graph.node[onenode]
-            if ((('identifiers' in current_node) and (node_id in current_node['identifiers'])) or (('@label' in current_node) and (node_id == current_node['@label'])) or (('label' in current_node) and (node_id == current_node['label'])) or (('mimat id' in current_node) and (node_id == current_node['mimat id'])) or (('name' in current_node) and (node_id == current_node['name']))):
-                if (('mimat id' in current_node) and (node_id == current_node['mimat id'])):
-                    verified_node_id = onenode
-                    break
-                elif (('identifiers' in current_node) and (node_id in current_node['identifiers'])):
-                    verified_node_id = onenode
-                elif not verified_node_id:
-                    verified_node_id = onenode
-    return verified_node_id
+            return source_xgmml_file_paths
 
 
-def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_list_column_index=0, output_dir='./'):
+    def has_file_extension(filename, file_extension):
+        expected_index = len(filename) - len(file_extension)
+        return filename.find(file_extension, expected_index, len(filename)) == expected_index
+
+
+    def has_matching_node(current_mapping_graph, node_id):
+        verified_node_id = None
+        if current_mapping_graph.has_node(node_id):
+            verified_node_id = node_id
+        else:
+            for onenode in current_mapping_graph.nodes():
+                current_node = current_mapping_graph.node[onenode]
+                if ((('identifiers' in current_node) and (node_id in current_node['identifiers'])) or (('@label' in current_node) and (node_id == current_node['@label'])) or (('label' in current_node) and (node_id == current_node['label'])) or (('mimat id' in current_node) and (node_id == current_node['mimat id'])) or (('name' in current_node) and (node_id == current_node['name']))):
+                    if (('mimat id' in current_node) and (node_id == current_node['mimat id'])):
+                        verified_node_id = onenode
+                        break
+                    elif (('identifiers' in current_node) and (node_id in current_node['identifiers'])):
+                        verified_node_id = onenode
+                    elif not verified_node_id:
+                        verified_node_id = onenode
+        return verified_node_id
+
+
+    identifiers_org_warning_triggered = False
+
     results_file_path = output_dir + 'interactions.csv'
     results_file = open(results_file_path, 'w')
     results_file.write('queryid,targetid,score,pvalue,pmid,datasource\n')
@@ -74,16 +79,22 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
     else:
         source_xgmml_file_paths += get_file_paths(source_xgmml, file_extension)
 
-    print 'source_xgmml_file_paths'
-    print source_xgmml_file_paths
+    print_debug('source_xgmml_file_paths')
+    print_debug(source_xgmml_file_paths)
 
     versions = []
 
     node_id_list = []
-    with open(node_id_list_file_path, 'rb') as csvfile:
-        node_id_list_reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
-        for row in node_id_list_reader:
-            node_id_list.append(row[node_id_list_column_index])
+    if os.path.isfile(node_ids):
+        with open(node_ids, 'rb') as csvfile:
+            node_id_list_reader = csv.reader(csvfile, delimiter='\t', quotechar='|')
+            for row in node_id_list_reader:
+                node_id_list.append(row[node_id_list_column_index])
+    else:
+        if hasattr(node_ids, '__iter__'):
+            node_id_list += node_ids
+        else:
+            node_id_list.append(node_ids)
 
     log_result['query_count'] = len(node_id_list)
 
@@ -92,7 +103,9 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
         version = source_xgmml_file_path_components[len(source_xgmml_file_path_components) - 1].replace('.xgmml', '')
         versions.append(version)
 
-        current_mapping_graph = Parse_XGMML(source_xgmml_file_path)
+        current_xgmml_file = open(source_xgmml_file_path)
+        current_mapping_graph = networkxgmml.XGMMLReader(current_xgmml_file)
+
         log_result[version + '_result_count'] = 0
 
         datasource_subgraph_node_ids = []
@@ -109,9 +122,10 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
 
             if regexes.identifiers_org.match(node_id):
                 name_or_identifier = re.sub(regexes.identifiers_org, '', node_id)
-            else:
-                print 'Warning: It is safest to use Miriam/identifiers.org identifiers, e.g., http://identifiers.org/mirbase.mature/MIMAT0003389.'
-                print ''
+            elif not identifiers_org_warning_triggered:
+                identifiers_org_warning_triggered = True
+                print 'Warning: To avoid errors, please consider using identifiers.org IDs (from the Miriam team) in your node ID list,'
+                print '\t\te.g., convert "MIMAT0003389" and "hsa-miR-542-3p" to "http://identifiers.org/mirbase.mature/MIMAT0003389"'
 
             verified_node_id = has_matching_node(current_mapping_graph, node_id)
             # If provided node_id is an identifiers.org IRI, but it doesn't match any nodes, we can
@@ -120,22 +134,21 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
                 verified_node_id = has_matching_node(current_mapping_graph, name_or_identifier)
 
                 if not verified_node_id:
-                    print 'Warning: No node found matching id "' + node_id + '"'
-                    print ''
+                    print 'Warning: No node found matching id "' + node_id + '" in datasource "' + version + '"'
 
             # if node is verified to exist in this graph
             if verified_node_id:
                 if (verified_node_id != node_id):
-                    print 'adding to mappings'
-                    print 'verified_node_id'
-                    print verified_node_id
+                    print_debug('adding to mappings')
+                    print_debug('verified_node_id')
+                    print_debug(verified_node_id)
                     id_mappings[verified_node_id] = node_id
 
                 '''
                 verified_node = current_mapping_graph.node[verified_node_id]
-                print ''
-                print 'node for selected verified_node_id'
-                print verified_node
+                print_debug('')
+                print_debug('node for selected verified_node_id')
+                print_debug(verified_node)
                 '''
 
                 # gets all neighbors, predecesseors and successors.
@@ -143,9 +156,9 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
                 # appears to only get successors.
                 #neighbor_verified_node_ids = current_mapping_graph.neighbors(verified_node_id)
                 '''
-                print ''
-                print 'neighbor_verified_node_ids for selected verified_node_id'
-                print neighbor_verified_node_ids
+                print_debug('')
+                print_debug('neighbor_verified_node_ids for selected verified_node_id')
+                print_debug(neighbor_verified_node_ids)
                 '''
 
                 if not verified_node_id in log_result['results_by_source']:
@@ -161,11 +174,11 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
                 datasource_subgraph_node_ids += item_subgraph_node_ids
 
         if (len(id_mappings) > 0):
-            print 'id_mappings'
-            print id_mappings
+            print_debug('id_mappings')
+            print_debug(id_mappings)
             tmp_subgraph = current_mapping_graph.subgraph(datasource_subgraph_node_ids)
             datasource_subgraph = nx.relabel_nodes(tmp_subgraph, id_mappings, copy=False)
-            print 'relabeled'
+            print_debug('relabeled')
         else:
             datasource_subgraph = current_mapping_graph.subgraph(datasource_subgraph_node_ids)
 
@@ -183,8 +196,8 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
             csvwriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
             for oneedge in datasource_subgraph.edges(data=True):
-                print 'oneedge'
-                print oneedge
+                print_debug('oneedge')
+                print_debug(oneedge)
                 edge_attributes = oneedge[2]
                 if oneedge[0] in node_id_list:
                     row_value = [oneedge[0], oneedge[1]]
@@ -213,12 +226,12 @@ def TargetInteractionFinder(source_xgmml, node_id_list_file_path=None, node_id_l
 
                 #row_value.append(version)
 
-                print 'row_value'
-                print row_value
+                print_debug('row_value')
+                print_debug(row_value)
                 csvwriter.writerow(row_value)
 
-    print 'log_result'
-    print log_result
+    print_debug('log_result')
+    print_debug(log_result)
     with file(logfile_path, 'w') as f:
         print >>f, '# Queried {} miRNA identifiers.'.format(log_result['query_count'])
         print >>f, '# Skipped {} identifiers.'.format(log_result['skipped_count'])
