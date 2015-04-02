@@ -19,7 +19,7 @@ To run the tests, you will need to download the miRNA-protein mapping files into
 
 ```
 cd targetinteractionfinder
-python __init__.py -h #to view options
+python __init__.py -h # to view options
 ```
 
 if the defaults are OK, you can then run:
