@@ -1,5 +1,6 @@
 # Test data
 source_xgmml/*.xgmml
+source_xgmml/*.p
 tests/test_DG
 tests/test_KCV
 tests/test_KJ

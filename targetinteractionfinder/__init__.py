@@ -24,6 +24,9 @@ def main():
     parser.add_argument('-o', '--output',
                         default='.',
                         help='output directory path (default = current working directory)')
+    parser.add_argument('--cache',
+                        default=True,
+                        type=bool, help='Cache source_xgmml graph(s) and use in subsequent runs to reduce parse time (default = True)')
     parser.add_argument('-d', '--debug',
                         default=False,
                         type=bool, help='Show debug messages (default = False)')

@@ -123,9 +123,15 @@ def TargetInteractionFinder(
             source_xgmml_file_path_components) - 1].replace('.xgmml', '')
         versions.append(version)
 
-        current_xgmml_file = open(source_xgmml_file_path)
-        current_mapping_graph = networkxgmml.XGMMLReader(current_xgmml_file)
-        # nx.write_gpickle(current_mapping_graph)
+        cached_graph_filepath = source_xgmml_file_path.replace('.xgmml', '.p')
+        if os.path.isfile(cached_graph_filepath):
+            print_debug('Using cached version of source_xgmml.')
+            current_mapping_graph = nx.read_gpickle(cached_graph_filepath)
+        else:
+            current_xgmml_file = open(source_xgmml_file_path)
+            current_mapping_graph = networkxgmml.XGMMLReader(
+                current_xgmml_file)
+            nx.write_gpickle(current_mapping_graph, cached_graph_filepath)
 
         log_result[version + '_result_count'] = 0
 
