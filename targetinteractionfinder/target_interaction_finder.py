@@ -121,7 +121,7 @@ def TargetInteractionFinder(
 
         current_xgmml_file = open(source_xgmml_file_path)
         current_mapping_graph = networkxgmml.XGMMLReader(current_xgmml_file)
-        nx.write_gpickle(current_mapping_graph)
+        # nx.write_gpickle(current_mapping_graph)
 
         log_result[version + '_result_count'] = 0
 
@@ -136,9 +136,9 @@ def TargetInteractionFinder(
                 log_result['skipped_count'] += 1
                 if debug:
                     print '''Warning: No node_id in line. Please provide a
-                        name (e.g., hsa-miR-542-3p),
-                        identifier (MIMAT0003389) or
-                        IRI (http://identifiers.org/mirbase.mature/MIMAT0003389)'''
+                    name (e.g., hsa-miR-542-3p),
+                    identifier (MIMAT0003389) or
+                    IRI (http://identifiers.org/mirbase.mature/MIMAT0003389)'''
             else:
                 if regexes.identifiers_org.match(node_id):
                     name_or_identifier = re.sub(
@@ -204,11 +204,6 @@ def TargetInteractionFinder(
         output_xgmml = open(output_xgmml_file_path, 'w')
         networkxgmml.XGMMLWriter(
             output_xgmml, datasource_subgraph, output_graph_name)
-
-        ''' The resulting CSV file should look like this:
-        queryid	targetid	score	pvalue	pmid	datasource
-        hsa-miR-542-3p	332			20728447	miRTarBase_hsa_r4.4
-        '''
 
         with open(results_file_path, 'a') as csvfile:
             csvwriter = csv.writer(csvfile, delimiter=',',
