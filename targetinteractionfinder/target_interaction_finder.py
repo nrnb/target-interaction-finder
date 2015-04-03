@@ -71,8 +71,6 @@ def TargetInteractionFinder(
                         verified_node_id = onenode
         return verified_node_id
 
-    identifiers_org_warning_triggered = False
-
     results_file_path = output_dir + 'interactions.csv'
     results_file = open(results_file_path, 'w')
     results_file.write('queryid,targetid,score,pvalue,pmid,datasource\n')
@@ -143,13 +141,6 @@ def TargetInteractionFinder(
                 if regexes.identifiers_org.match(node_id):
                     name_or_identifier = re.sub(
                         regexes.identifiers_org, '', node_id)
-                elif not identifiers_org_warning_triggered:
-                    identifiers_org_warning_triggered = True
-                    print '''Warning: To avoid errors, please consider using
-                        identifiers.org IDs (from the Miriam team)
-                        in your node ID list,
-                        e.g., convert "MIMAT0003389" or "hsa-miR-542-3p" to
-                        "http://identifiers.org/mirbase.mature/MIMAT0003389"'''
 
                 verified_node_id = has_matching_node(
                     current_mapping_graph, node_id)
