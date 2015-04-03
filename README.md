@@ -17,27 +17,28 @@ To run the tests, you will need to download the miRNA-protein mapping files into
 
 ## To run
 
-```
-cd targetinteractionfinder
-python __init__.py -h # to view options
-```
-
-if the defaults are OK, you can then run:
+Check command line argument defaults:
 
 ```
-python __init__.py hsa-miR-370-3p
+python targetinteractionfinder/__init__.py -h
 ```
 
-or
+if the defaults are OK, you can then find target interactions for a specific node_id:
 
 ```
-python __init__.py '../tests/test4/input/node-list.txt'
+python targetinteractionfinder/__init__.py hsa-miR-370-3p
+```
+
+or provide a file path to a list of node_ids:
+
+```
+python targetinteractionfinder/__init__.py 'tests/test4/input/node-list.txt'
 ```
 
 Or you can override the defaults, e.g., override default output directory path:
 
 ```
-python __init__.py '../tests/test4/input/node-list.txt' -o '../tests/test4/output-actual/'
+python targetinteractionfinder/__init__.py 'tests/test4/input/node-list.txt' -o 'tests/test4/output-actual/'
 ```
 
 ## Todo

@@ -12,8 +12,12 @@ import regexes
 
 
 def TargetInteractionFinder(
-        source_xgmml, node_ids=None, node_id_list_column_index=0,
-        output_dir='./', debug=False):
+        source_xgmml='./source_xgmml/',
+        node_ids=None,
+        node_id_list_column_index=0,
+        output_dir='.',
+        debug=False):
+
     def print_debug(message):
         if debug:
             print message
