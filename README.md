@@ -37,7 +37,7 @@ python __init__.py '../tests/test4/input/node-list.txt'
 Or you can override the defaults, as is required to run the tests:
 
 ```
-python __init__.py '../tests/test4/input/node-list.txt' -i '../miRNA-protein-mappings/' -o '../tests/test4/output-actual/'
+python __init__.py '../tests/test4/input/node-list.txt' -s '../tests/miRNA-protein-mappings/' -o '../tests/test4/output-actual/'
 ```
 
 ## Todo
