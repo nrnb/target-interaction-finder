@@ -37,9 +37,10 @@ def main():
     node_id_list_column_index = args.column - 1
     source_type = args.type
     output_dir = args.output
+    cache = args.cache
     debug = args.debug
 
-    return TargetInteractionFinder(source_xgmml=source_xgmml, node_ids=node_ids, node_id_list_column_index=node_id_list_column_index, output_dir=output_dir, debug=debug)
+    return TargetInteractionFinder(source_xgmml=source_xgmml, node_ids=node_ids, node_id_list_column_index=node_id_list_column_index, output_dir=output_dir, cache=cache, debug=debug)
 
 if __name__ == '__main__':
     main()

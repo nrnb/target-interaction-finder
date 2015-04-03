@@ -16,6 +16,7 @@ def TargetInteractionFinder(
         node_ids=None,
         node_id_list_column_index=0,
         output_dir='.',
+        cache=True,
         debug=False):
 
     def print_debug(message):
@@ -124,7 +125,7 @@ def TargetInteractionFinder(
         versions.append(version)
 
         cached_graph_filepath = source_xgmml_file_path.replace('.xgmml', '.p')
-        if os.path.isfile(cached_graph_filepath):
+        if cache and os.path.isfile(cached_graph_filepath):
             print_debug('Using cached version of source_xgmml.')
             current_mapping_graph = nx.read_gpickle(cached_graph_filepath)
         else:
