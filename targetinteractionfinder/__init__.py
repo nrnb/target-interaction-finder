@@ -9,9 +9,9 @@ def main():
     parser = argparse.ArgumentParser(description='Extract subgraph(s) from XGMML network(s).')
     parser.add_argument('ids', type=str, help='identifier or file path to identifier list')
     parser.add_argument('-c', '--column', default=1, type=int, help='column number for node identifiers in node_ids file (default = 1)')
-    parser.add_argument('-s', '--source', default='./source/', help='source file or directory path(s) to database XGMML(default = directory named "source" in current working directory)')
+    parser.add_argument('-s', '--source', default='./source_xgmml/', help='source file or directory path(s) to database XGMML(default = directory named "source_xgmml" in current working directory)')
     parser.add_argument('-t', '--type', default='rna', help='node type (rna or protein; default = rna)')
-    parser.add_argument('-o', '--output', default='./output/', help='output directory path (default = directory named "output" in current working directory)')
+    parser.add_argument('-o', '--output', default='.', help='output directory path (default = current working directory)')
     parser.add_argument('-d', '--debug', default=False, type=bool, help='Show debug messages')
     args = parser.parse_args()
 

@@ -121,6 +121,7 @@ def TargetInteractionFinder(
 
         current_xgmml_file = open(source_xgmml_file_path)
         current_mapping_graph = networkxgmml.XGMMLReader(current_xgmml_file)
+        nx.write_gpickle(current_mapping_graph)
 
         log_result[version + '_result_count'] = 0
 
@@ -132,11 +133,12 @@ def TargetInteractionFinder(
             verified_node_id = None
             name_or_identifier = None
             if not node_id:
-                print '''Warning: No node_id in line. Please provide a
-                    name (e.g., hsa-miR-542-3p),
-                    identifier (MIMAT0003389) or
-                    IRI (http://identifiers.org/mirbase.mature/MIMAT0003389)'''
                 log_result['skipped_count'] += 1
+                if debug:
+                    print '''Warning: No node_id in line. Please provide a
+                        name (e.g., hsa-miR-542-3p),
+                        identifier (MIMAT0003389) or
+                        IRI (http://identifiers.org/mirbase.mature/MIMAT0003389)'''
             else:
                 if regexes.identifiers_org.match(node_id):
                     name_or_identifier = re.sub(
