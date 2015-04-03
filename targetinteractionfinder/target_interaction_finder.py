@@ -15,6 +15,7 @@ def TargetInteractionFinder(
         source_xgmml='./source_xgmml/',
         node_ids=None,
         node_id_list_column_index=0,
+        source_type='rna',
         output_dir='.',
         cache=True,
         debug=False):
