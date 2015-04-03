@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graph xmlns="http://www.cs.rpi.edu/XGMML" id="1354705784071" label="MicroCosm v5 Homo sapiens">
+  <att xmlns="" label="SourceDatasource" name="SourceDatasource" value="miRBase" type="string" />
+  <att xmlns="" label="TargetType" name="TargetType" value="gene" type="string" />
+  <att xmlns="" label="Type" name="Type" value="predicted miRNA targets" type="string" />
+  <att xmlns="" label="Database" name="Database" value="MicroCosm v5 (Homo sapiens)" type="string" />
+  <att xmlns="" label="SourceType" name="SourceType" value="mirna" type="string" />
+  <att xmlns="" label="SourceFile" name="SourceFile" value="v5.txt.homo_sapiens" type="string" />
+  <att xmlns="" label="Identifiers" name="Identifiers" value="identifiers" type="string" />
+  <att xmlns="" label="TargetDatasource" name="TargetDatasource" value="Ensembl" type="string" />
+
+<node xmlns="" id="MIMAT0003389" label="MIMAT0003389">
+    <att label="mimat id" name="mimat id" value="MIMAT0003389" type="string" />
+    <att type="list" name="identifiers">
+      <att type="string" name="identifiers" value="MIMAT0003389" />
+      <att type="string" name="identifiers" value="hsa-miR-542-3p" />
+    </att>
+    <att label="name" name="name" value="hsa-miR-542-3p" type="string" />
+    <att label="biologicalType" name="biologicalType" value="microRNA" type="string" />
+    <att label="label" name="label" value="hsa-miR-542-3p" type="string" />
+  </node>
+  <node xmlns="" id="ENSG00000166200" label="ENSG00000166200">
+    <att type="list" name="identifiers">
+      <att type="string" name="identifiers" value="ENSG00000166200" />
+      <att type="string" name="identifiers" value="9318" />
+      <att type="string" name="identifiers" value="H0YKU5" />
+      <att type="string" name="identifiers" value="H0YMC2" />
+      <att type="string" name="identifiers" value="B4DIH5" />
+      <att type="string" name="identifiers" value="P61201" />
+      <att type="string" name="identifiers" value="COPS2" />
+      <att type="string" name="identifiers" value="H0YM03" />
+      <att type="string" name="identifiers" value="Q59EL2" />
+    </att>
+    <att label="name" name="name" value="COPS2" type="string" />
+    <att label="ensembl" name="ensembl" value="ENSG00000166200" type="string" />
+    <att label="biologicalType" name="biologicalType" value="gene" type="string" />
+    <att label="label" name="label" value="COPS2" type="string" />
+  </node>
+  <node xmlns="" id="ENSG00000166800" label="ENSG00000166800">
+    <att type="list" name="identifiers">
+      <att type="string" name="identifiers" value="ENSG00000166800" />
+      <att type="string" name="identifiers" value="160287" />
+      <att type="string" name="identifiers" value="LDHAL6A" />
+      <att type="string" name="identifiers" value="Q6ZMR3" />
+    </att>
+    <att label="name" name="name" value="LDHAL6A" type="string" />
+    <att label="ensembl" name="ensembl" value="ENSG00000166800" type="string" />
+    <att label="biologicalType" name="biologicalType" value="gene" type="string" />
+    <att label="label" name="label" value="LDHAL6A" type="string" />
+  </node>
+  <node xmlns="" id="ENSG00000119929" label="ENSG00000119929">
+    <att type="list" name="identifiers">
+      <att type="string" name="identifiers" value="ENSG00000119929" />
+      <att type="string" name="identifiers" value="51076" />
+      <att type="string" name="identifiers" value="RP11-483F11.3" />
+      <att type="string" name="identifiers" value="Q5TCZ7" />
+      <att type="string" name="identifiers" value="CUTC" />
+      <att type="string" name="identifiers" value="Q9NTM9" />
+    </att>
+    <att label="name" name="name" value="CUTC" type="string" />
+    <att label="ensembl" name="ensembl" value="ENSG00000119929" type="string" />
+    <att label="biologicalType" name="biologicalType" value="gene" type="string" />
+    <att label="label" name="label" value="CUTC" type="string" />
+  </node>
+
+  <edge xmlns="" id="515475" label="515475" source="MIMAT0003389" target="ENSG00000166200">
+    <att label="interaction" name="interaction" value="" type="string" />
+    <att label="pValue" name="pValue" value="4.599570e-02" type="string" />
+    <att label="score" name="score" value="16.3451" type="real" />
+    <att label="interactionType" name="interactionType" value="microRNA-target" type="string" />
+    <att label="datasource" name="datasource" value="MicroCosm version 5" type="string" />
+  </edge>
+  <edge xmlns="" id="528450" label="528450" source="MIMAT0003389" target="ENSG00000166800">
+    <att label="interaction" name="interaction" value="" type="string" />
+    <att label="pValue" name="pValue" value="2.732060e-02" type="string" />
+    <att label="score" name="score" value="16.9226" type="real" />
+    <att label="interactionType" name="interactionType" value="microRNA-target" type="string" />
+    <att label="datasource" name="datasource" value="MicroCosm version 5" type="string" />
+  </edge>
+  
+<edge xmlns="" id="173133" label="173133" source="MIMAT0003389" target="ENSG00000119929">
+    <att label="interaction" name="interaction" value="" type="string" />
+    <att label="pValue" name="pValue" value="4.963660e-02" type="string" />
+    <att label="score" name="score" value="16.2596" type="real" />
+    <att label="interactionType" name="interactionType" value="microRNA-target" type="string" />
+    <att label="datasource" name="datasource" value="MicroCosm version 5" type="string" />
+  </edge>
+</graph>
