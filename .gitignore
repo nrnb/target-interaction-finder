@@ -1,5 +1,8 @@
 # Test data
-tests/miRNA-protein-mappings/*.xgmml
+source_xgmml/*.xgmml
+tests/test_DG
+tests/test_KCV
+tests/test_KJ
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

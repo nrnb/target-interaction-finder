@@ -13,7 +13,7 @@ easy_install -U setuptools # Only if your setuptools is outdated
 pip install https://github.com/ariutta/networkxxgmml/zipball/master
 ```
 
-To run the tests, you will need to download the miRNA-protein mapping files into the "miRNA-protein-mappings" directory: https://github.com/ariutta/target-interaction-finder/tree/master/miRNA-protein-mappings
+To run the tests, you will need to download the miRNA-protein mapping files into the ```source_xgmml``` directory: https://github.com/ariutta/target-interaction-finder/tree/master/source_xgmml
 
 ## To run
 
@@ -34,10 +34,10 @@ or
 python __init__.py '../tests/test4/input/node-list.txt'
 ```
 
-Or you can override the defaults, as is required to run the tests:
+Or you can override the defaults, e.g., override default output directory path:
 
 ```
-python __init__.py '../tests/test4/input/node-list.txt' -s '../tests/miRNA-protein-mappings/' -o '../tests/test4/output-actual/'
+python __init__.py '../tests/test4/input/node-list.txt' -o '../tests/test4/output-actual/'
 ```
 
 ## Todo
