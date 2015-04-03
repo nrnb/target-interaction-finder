@@ -17,7 +17,7 @@ def main():
                         help='column number for node identifiers in node_ids file (default = 1)')
     parser.add_argument('-s', '--source',
                         default='./source_xgmml/',
-                        help='source file or directory path(s) to database XGMML(default = directory named "source_xgmml" in current working directory)')
+                        help='source file or directory path(s) to database XGMML (default = directory named "source_xgmml" in current working directory)')
     parser.add_argument('-t', '--type',
                         default='rna',
                         help='node type (rna or protein; default = rna)')
@@ -26,7 +26,7 @@ def main():
                         help='output directory path (default = current working directory)')
     parser.add_argument('-d', '--debug',
                         default=False,
-                        type=bool, help='Show debug messages')
+                        type=bool, help='Show debug messages (default = False)')
     args = parser.parse_args()
 
     node_ids = args.ids
