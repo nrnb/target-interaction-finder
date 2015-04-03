@@ -120,12 +120,16 @@ def TargetInteractionFinder(
     log_result['query_count'] = len(node_id_list)
 
     for source_xgmml_file_path in source_xgmml_file_paths:
-        source_xgmml_file_path_components = source_xgmml_file_path.split('/')
-        version = source_xgmml_file_path_components[len(
-            source_xgmml_file_path_components) - 1].replace('.xgmml', '')
+        source_xgmml_dirname = os.path.dirname(source_xgmml_file_path)
+        source_xgmml_basename = os.path.basename(source_xgmml_file_path)
+
+        version = source_xgmml_basename.replace('.xgmml', '')
         versions.append(version)
 
-        cached_graph_filepath = source_xgmml_file_path.replace('.xgmml', '.p')
+        cached_graph_filename = '.' + source_xgmml_basename.replace(
+            '.xgmml', '.p')
+        cached_graph_filepath = os.path.join(
+            source_xgmml_dirname, cached_graph_filename)
         if cache and os.path.isfile(cached_graph_filepath):
             print_debug('Using cached version of source_xgmml.')
             current_mapping_graph = nx.read_gpickle(cached_graph_filepath)
@@ -184,9 +188,9 @@ def TargetInteractionFinder(
                         current_mapping_graph, verified_node_id))
 
                     current_source_log_result = log_result['results_by_source']
-                    if verified_node_id not in current_source_log_result:
-                        current_source_log_result[verified_node_id] = {}
-                    current_source_log_result[verified_node_id][version] = len(
+                    if node_id not in current_source_log_result:
+                        current_source_log_result[node_id] = {}
+                    current_source_log_result[node_id][version] = len(
                         neighbor_verified_node_ids)
 
                     log_result['total_result_count'] += len(
