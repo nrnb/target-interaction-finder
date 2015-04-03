@@ -247,9 +247,9 @@ def TargetInteractionFinder(
     print_debug('log_result')
     print_debug(log_result)
     with file(logfile_path, 'w') as f:
-        print >>f, '# Queried {} miRNA identifiers.'.format(
+        print >>f, '# Queried {} line(s).'.format(
             log_result['query_count'])
-        print >>f, '# Skipped {} identifiers.'.format(
+        print >>f, '# Skipped {} line(s).'.format(
             log_result['skipped_count'])
         print >>f, '# Found {} results.'.format(
             log_result['total_result_count'])
