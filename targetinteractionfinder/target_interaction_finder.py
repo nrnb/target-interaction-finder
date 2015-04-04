@@ -184,29 +184,8 @@ def TargetInteractionFinder(
                         id_mappings[verified_node_id] = node_id
 
                     if node_type == 'rna':
-                        print 'verified_node_id'
-                        print verified_node_id
                         neighbor_verified_node_ids = current_mapping_graph.successors(
                             verified_node_id)
-
-                        neighbor_verified_node_ids1 = current_mapping_graph[verified_node_id]
-                        print ''
-                        print 'neighbor_verified_node_ids1'
-                        print neighbor_verified_node_ids1
-                        neighbor_verified_node_ids1 = list(nx.neighbors(
-                            current_mapping_graph, verified_node_id))
-                        print ''
-                        print 'neighbor_verified_node_ids1'
-                        print neighbor_verified_node_ids1
-                        '''
-                        '''
-                        neighbor_verified_node_ids2 = current_mapping_graph.successors(
-                            verified_node_id)
-                        print ''
-                        print 'neighbor_verified_node_ids2'
-                        print neighbor_verified_node_ids2
-                        '''
-                        '''
                     else:
                         neighbor_verified_node_ids = current_mapping_graph.predecessors(
                             verified_node_id)

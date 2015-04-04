@@ -3,84 +3,25 @@
   <att name="selected" value="1" type="boolean" />
   <att name="name" value="mirtarbase-hsa-4.4-subgraph.xgmml" type="string"/>
   <att name="shared name" value="mirtarbase-hsa-4.4-subgraph.xgmml" type="string"/>
-  <node id="hsa-miR-10a-5p" label="hsa-miR-10a-5p">
-    <att name="Target Gene (Entrez ID)" value="92597" type="string" />
-    <att name="miRTarBase ID" value="MIRT003896" type="string" />
+  <node id="http://identifiers.org/ncbigene/3611" label="3611">
+    <att name="Target Gene (Entrez ID)" value="3611" type="string" />
+    <att name="miRTarBase ID" value="MIRT003803" type="string" />
     <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
     <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-10a-5p" type="string" />
-      <att name="identifiers" value="hsa-miR-10a" type="string" />
-      <att name="identifiers" value="MIMAT0000253" type="string" />
+      <att name="identifiers" value="3611" type="string" />
+      <att name="identifiers" value="B7Z1I0" type="string" />
+      <att name="identifiers" value="B7Z418" type="string" />
+      <att name="identifiers" value="E9PNR4" type="string" />
+      <att name="identifiers" value="E9PQ27" type="string" />
+      <att name="identifiers" value="Q13418" type="string" />
+      <att name="identifiers" value="E9PQ52" type="string" />
+      <att name="identifiers" value="E9PM54" type="string" />
+      <att name="identifiers" value="ENSG00000166333" type="string" />
     </att>
-    <att name="@label" value="hsa-miR-10a-5p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-10a-5p" type="string" />
-    <att name="Target Gene" value="MOB1B" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="332" label="332">
-    <att name="Target Gene (Entrez ID)" value="332" type="string" />
-    <att name="miRTarBase ID" value="MIRT000581" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="332" type="string" />
-      <att name="identifiers" value="O15392" type="string" />
-      <att name="identifiers" value="ENSG00000089685" type="string" />
-      <att name="identifiers" value="A3E0Z4" type="string" />
-      <att name="identifiers" value="H3BLT4" type="string" />
-      <att name="identifiers" value="A3E0Z5" type="string" />
-      <att name="identifiers" value="A3E0Z6" type="string" />
-      <att name="identifiers" value="A3E0Z7" type="string" />
-    </att>
-    <att name="@label" value="BIRC5" type="string" />
+    <att name="@label" value="ILK" type="string" />
     <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-572" type="string" />
-    <att name="Target Gene" value="BIRC5" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="hsa-miR-145-5p" label="hsa-miR-145-5p">
-    <att name="Target Gene (Entrez ID)" value="8533" type="string" />
-    <att name="miRTarBase ID" value="MIRT001917" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-145-5p" type="string" />
-      <att name="identifiers" value="hsa-miR-145" type="string" />
-      <att name="identifiers" value="MIMAT0000437" type="string" />
-    </att>
-    <att name="@label" value="hsa-miR-145-5p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-145-5p" type="string" />
-    <att name="Target Gene" value="COPS3" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="hsa-miR-101-3p" label="hsa-miR-101-3p">
-    <att name="Target Gene (Entrez ID)" value="991" type="string" />
-    <att name="miRTarBase ID" value="MIRT000381" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-101-3p" type="string" />
-      <att name="identifiers" value="hsa-miR-101" type="string" />
-      <att name="identifiers" value="MIMAT0000099" type="string" />
-    </att>
-    <att name="@label" value="hsa-miR-101-3p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-101-3p" type="string" />
-    <att name="Target Gene" value="CDC20" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="hsa-miR-335-5p" label="hsa-miR-335-5p">
-    <att name="Target Gene (Entrez ID)" value="3486" type="string" />
-    <att name="miRTarBase ID" value="MIRT002431" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-335-5p" type="string" />
-      <att name="identifiers" value="MIMAT0000765" type="string" />
-      <att name="identifiers" value="hsa-miR-335" type="string" />
-    </att>
-    <att name="@label" value="hsa-miR-335-5p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-335-5p" type="string" />
-    <att name="Target Gene" value="IGFBP3" type="string" />
+    <att name="miRNA" value="hsa-miR-26a-5p" type="string" />
+    <att name="Target Gene" value="ILK" type="string" />
     <att name="Species (miRNA)" value="Homo sapiens" type="string" />
   </node>
   <node id="NF1" label="4763">
@@ -107,279 +48,24 @@
     <att name="Target Gene" value="NF1" type="string" />
     <att name="Species (miRNA)" value="Homo sapiens" type="string" />
   </node>
-  <node id="hsa-miR-370-3p" label="hsa-miR-370-3p">
-    <att name="Target Gene (Entrez ID)" value="27178" type="string" />
-    <att name="miRTarBase ID" value="MIRT001074" type="string" />
+  <node id="332" label="332">
+    <att name="Target Gene (Entrez ID)" value="332" type="string" />
+    <att name="miRTarBase ID" value="MIRT000581" type="string" />
     <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
     <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-370-3p" type="string" />
+      <att name="identifiers" value="332" type="string" />
+      <att name="identifiers" value="O15392" type="string" />
+      <att name="identifiers" value="ENSG00000089685" type="string" />
+      <att name="identifiers" value="A3E0Z4" type="string" />
+      <att name="identifiers" value="H3BLT4" type="string" />
+      <att name="identifiers" value="A3E0Z5" type="string" />
+      <att name="identifiers" value="A3E0Z6" type="string" />
+      <att name="identifiers" value="A3E0Z7" type="string" />
     </att>
-    <att name="@label" value="hsa-miR-370-3p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-370-3p" type="string" />
-    <att name="Target Gene" value="IL37" type="string" />
+    <att name="@label" value="BIRC5" type="string" />
+    <att name="biologicalType" value="gene" type="string" />
+    <att name="miRNA" value="hsa-miR-572" type="string" />
+    <att name="Target Gene" value="BIRC5" type="string" />
     <att name="Species (miRNA)" value="Homo sapiens" type="string" />
   </node>
-  <node id="hsa-miR-425-5p" label="hsa-miR-425-5p">
-    <att name="Target Gene (Entrez ID)" value="79661" type="string" />
-    <att name="miRTarBase ID" value="MIRT016648" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-425-5p" type="string" />
-      <att name="identifiers" value="MIMAT0003393" type="string" />
-    </att>
-    <att name="@label" value="hsa-miR-425-5p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-425-5p" type="string" />
-    <att name="Target Gene" value="NEIL1" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="hsa-miR-542-3p" label="hsa-miR-542-3p">
-    <att name="Target Gene (Entrez ID)" value="92922" type="string" />
-    <att name="miRTarBase ID" value="MIRT005363" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-542-3p" type="string" />
-      <att name="identifiers" value="MIMAT0003389" type="string" />
-    </att>
-    <att name="@label" value="hsa-miR-542-3p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-542-3p" type="string" />
-    <att name="Target Gene" value="CCDC102A" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="http://identifiers.org/ncbigene/3611" label="3611">
-    <att name="Target Gene (Entrez ID)" value="3611" type="string" />
-    <att name="miRTarBase ID" value="MIRT003803" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="3611" type="string" />
-      <att name="identifiers" value="B7Z1I0" type="string" />
-      <att name="identifiers" value="B7Z418" type="string" />
-      <att name="identifiers" value="E9PNR4" type="string" />
-      <att name="identifiers" value="E9PQ27" type="string" />
-      <att name="identifiers" value="Q13418" type="string" />
-      <att name="identifiers" value="E9PQ52" type="string" />
-      <att name="identifiers" value="E9PM54" type="string" />
-      <att name="identifiers" value="ENSG00000166333" type="string" />
-    </att>
-    <att name="@label" value="ILK" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-26a-5p" type="string" />
-    <att name="Target Gene" value="ILK" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <node id="hsa-miR-10b-5p" label="hsa-miR-10b-5p">
-    <att name="Target Gene (Entrez ID)" value="23270" type="string" />
-    <att name="miRTarBase ID" value="MIRT002021" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="hsa-miR-10b-5p" type="string" />
-      <att name="identifiers" value="hsa-miR-10b" type="string" />
-      <att name="identifiers" value="MIMAT0000254" type="string" />
-    </att>
-    <att name="@label" value="hsa-miR-10b-5p" type="string" />
-    <att name="biologicalType" value="miRNA" type="string" />
-    <att name="miRNA" value="hsa-miR-10b-5p" type="string" />
-    <att name="Target Gene" value="TSPYL4" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-  </node>
-  <edge source="hsa-miR-10a-5p" target="332">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-    <att name="Support Type" value="Functional MTI (Weak)" type="string" />
-    <att name="Experiments" value="Sequencing" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="20371350" type="string" />
-  </edge>
-  <edge source="hsa-miR-101-3p" target="332">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-    <att name="Support Type" value="Functional MTI (Weak)" type="string" />
-    <att name="Experiments" value="Sequencing" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="20371350" type="string" />
-  </edge>
-  <edge source="hsa-miR-145-5p" target="http://identifiers.org/ncbigene/3611">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="23104321" type="string" />
-    <att name="Experiments" value="Luciferase reporter assay//qRT-PCR//Western blot" type="string" />
-    <att name="Support Type" value="Functional MTI" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-  </edge>
-  <edge source="hsa-miR-335-5p" target="332">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-    <att name="Support Type" value="Functional MTI" type="string" />
-    <att name="Experiments" value="Luciferase reporter assay" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="23232114" type="string" />
-  </edge>
-  <edge source="hsa-miR-370-3p" target="NF1">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="23077663" type="string" />
-    <att name="Experiments" value="Luciferase reporter assay" type="string" />
-    <att name="Support Type" value="Functional MTI" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-  </edge>
-  <edge source="hsa-miR-425-5p" target="332">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-    <att name="Support Type" value="Functional MTI (Weak)" type="string" />
-    <att name="Experiments" value="Sequencing" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="20371350" type="string" />
-  </edge>
-  <edge source="hsa-miR-542-3p" target="http://identifiers.org/ncbigene/3611">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="21860426" type="string" />
-    <att name="Experiments" value="Immunoblot//Immunocytochemistry//Luciferase reporter assay" type="string" />
-    <att name="Support Type" value="Functional MTI" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-  </edge>
-  <edge source="hsa-miR-542-3p" target="332">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-    <att name="Support Type" value="Functional MTI" type="string" />
-    <att name="Experiments" value="Luciferase reporter assay//Microarray//qRT-PCR//Western blot" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="20728447" type="string" />
-  </edge>
-  <edge source="hsa-miR-10b-5p" target="NF1">
-    <att name="Target Gene (Entrez ID)" value="140691" type="string" />
-    <att name="miRNA" value="hsa-miR-506-3p" type="string" />
-    <att name="miRTarBase ID" value="MIRT007234" type="string" />
-    <att name="Species (Target Gene)" value="Homo sapiens" type="string" />
-    <att name="identifiers" type="list">
-      <att name="identifiers" value="140691" type="string" />
-      <att name="identifiers" value="ENSG00000185880" type="string" />
-      <att name="identifiers" value="H0YKB8" type="string" />
-      <att name="identifiers" value="H0YL66" type="string" />
-      <att name="identifiers" value="Q86WT6" type="string" />
-    </att>
-    <att name="@label" value="TRIM69" type="string" />
-    <att name="References (PMID)" value="20550523" type="string" />
-    <att name="Experiments" value="GFP reporter assay//Luciferase reporter assay//Microarray//qRT-PCR" type="string" />
-    <att name="Support Type" value="Functional MTI" type="string" />
-    <att name="Species (miRNA)" value="Homo sapiens" type="string" />
-    <att name="biologicalType" value="gene" type="string" />
-    <att name="interaction" value="MTI" type="string" />
-    <att name="Target Gene" value="TRIM69" type="string" />
-    <att name="datasource" value="miRTarBase_hsa_r4.4" type="string" />
-  </edge>
 </graph>
