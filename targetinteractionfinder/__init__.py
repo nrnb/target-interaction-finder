@@ -26,15 +26,17 @@ def main():
                         default='rna',
                         help='input type (rna or protein; default = rna)')
     parser.add_argument('-o', '--output',
-                        default='.',
+                        default='./',
                         help='''output directory path
                         (default = current working directory)''')
+    """
     parser.add_argument('--cache',
                         default=True,
                         type=bool,
                         help='''Cache source_xgmml graph(s) and use in
                         subsequent runs to reduce parse time
                         (default = True)''')
+    """
     parser.add_argument('-d', '--debug',
                         default=False,
                         type=bool,
@@ -46,7 +48,8 @@ def main():
     node_id_list_column_index = args.column - 1
     node_type = args.type
     output_dir = args.output
-    cache = args.cache
+    #cache = args.cache
+    cache = True
     debug = args.debug
 
     return TargetInteractionFinder(
