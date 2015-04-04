@@ -15,7 +15,7 @@ def TargetInteractionFinder(
         source_xgmml='./source_xgmml/',
         node_ids=None,
         node_id_list_column_index=0,
-        source_type='rna',
+        node_type='rna',
         output_dir='.',
         cache=True,
         debug=False):
@@ -183,9 +183,33 @@ def TargetInteractionFinder(
                         print_debug(verified_node_id)
                         id_mappings[verified_node_id] = node_id
 
-                    # gets all neighbors, predecesseors and successors.
-                    neighbor_verified_node_ids = list(nx.all_neighbors(
-                        current_mapping_graph, verified_node_id))
+                    if node_type == 'rna':
+                        print 'verified_node_id'
+                        print verified_node_id
+                        neighbor_verified_node_ids = current_mapping_graph.successors(
+                            verified_node_id)
+
+                        neighbor_verified_node_ids1 = current_mapping_graph[verified_node_id]
+                        print ''
+                        print 'neighbor_verified_node_ids1'
+                        print neighbor_verified_node_ids1
+                        neighbor_verified_node_ids1 = list(nx.neighbors(
+                            current_mapping_graph, verified_node_id))
+                        print ''
+                        print 'neighbor_verified_node_ids1'
+                        print neighbor_verified_node_ids1
+                        '''
+                        '''
+                        neighbor_verified_node_ids2 = current_mapping_graph.successors(
+                            verified_node_id)
+                        print ''
+                        print 'neighbor_verified_node_ids2'
+                        print neighbor_verified_node_ids2
+                        '''
+                        '''
+                    else:
+                        neighbor_verified_node_ids = current_mapping_graph.predecessors(
+                            verified_node_id)
 
                     current_source_log_result = log_result['results_by_source']
                     if node_id not in current_source_log_result:

@@ -15,7 +15,7 @@ def main():
     parser.add_argument('-c', '--column',
                         default=1,
                         type=int,
-                        help='''column number for node identifiers in node_ids file
+                        help='''column number for identifiers in identifier list file
                         (default = 1)''')
     parser.add_argument('-s', '--source',
                         default='./source_xgmml/',
@@ -24,7 +24,7 @@ def main():
                             in current working directory)''')
     parser.add_argument('-t', '--type',
                         default='rna',
-                        help='node type (rna or protein; default = rna)')
+                        help='input type (rna or protein; default = rna)')
     parser.add_argument('-o', '--output',
                         default='.',
                         help='''output directory path
@@ -44,7 +44,7 @@ def main():
     node_ids = args.ids
     source_xgmml = args.source
     node_id_list_column_index = args.column - 1
-    source_type = args.type
+    node_type = args.type
     output_dir = args.output
     cache = args.cache
     debug = args.debug
@@ -53,7 +53,7 @@ def main():
         source_xgmml=source_xgmml,
         node_ids=node_ids,
         node_id_list_column_index=node_id_list_column_index,
-        source_type=source_type,
+        node_type=node_type,
         output_dir=output_dir,
         cache=cache,
         debug=debug)
