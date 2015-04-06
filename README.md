@@ -17,6 +17,8 @@ To run the tests, you will need to download the miRNA-protein mapping files into
 
 ## To run
 
+Note: in the future, the command line argument functionality should allow for just calling ```targetinteractionfinder```, but for now we're using the kludge of ```python targetinteractionfinder/__init__.py```. This kludge might not work in a future version.
+
 Check command line argument defaults:
 
 ```
