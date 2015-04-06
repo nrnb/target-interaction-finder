@@ -23,19 +23,19 @@ Check command line argument defaults:
 python targetinteractionfinder/__init__.py -h
 ```
 
-if the defaults are OK, you can then find target interactions for a specific node_id:
+If the defaults are OK, you can then find target interactions for one specific node_id (e.g., an miRNA name):
 
 ```
 python targetinteractionfinder/__init__.py hsa-miR-370-3p
 ```
 
-or provide a file path to a list of node_ids:
+or for multiple node_ids, by providing a file path to a CSV file that has a column of node_ids:
 
 ```
 python targetinteractionfinder/__init__.py 'tests/test4/input/node-list.txt'
 ```
 
-Or you can override the defaults, e.g., override default output directory path:
+If the defaults are not OK, you can override them, e.g., to override the default output directory path:
 
 ```
 python targetinteractionfinder/__init__.py 'tests/test4/input/node-list.txt' -o 'tests/test4/output-actual/'
@@ -43,5 +43,6 @@ python targetinteractionfinder/__init__.py 'tests/test4/input/node-list.txt' -o 
 
 ## Todo
 * [x] Get command line arguments working
-* [ ] Test
-* [ ] Publish
+* [x] Test
+* [ ] Automated unit tests
+* [ ] Publish to the Python Package Index
