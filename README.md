@@ -13,7 +13,7 @@ easy_install -U setuptools # Only if your setuptools is outdated
 pip install https://github.com/ariutta/networkxxgmml/zipball/master
 ```
 
-To run the tests, you will need to download the miRNA-protein mapping files into the ```source_xgmml``` directory: https://github.com/ariutta/target-interaction-finder/tree/master/source_xgmml
+This library by default expects the source XGMML network file(s) to be located in the ```source_xgmml``` directory. For example, to run the tests, you will need to download the three miRNA-protein mapping files used at Genboree into the ```source_xgmml``` directory: https://github.com/ariutta/target-interaction-finder/tree/master/source_xgmml
 
 ## To run
 
