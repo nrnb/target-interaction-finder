@@ -6,7 +6,7 @@ A component for the Genboree workbench.
 ## To install
 
 ```
-git clone git@github.com:ariutta/target-interaction-finder.git
+git clone https://github.com/ariutta/target-interaction-finder.git
 cd target-interaction-finder
 pip install -e .
 easy_install -U setuptools # Only if your setuptools is outdated
