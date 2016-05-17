@@ -9,6 +9,9 @@ import networkx as nx
 import networkxgmml
 import re
 import regexes
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 
 def TargetInteractionFinder(
