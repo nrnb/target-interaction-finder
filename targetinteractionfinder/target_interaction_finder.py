@@ -250,7 +250,7 @@ def TargetInteractionFinder(
                     row_value.append('')
 
                 if 'referenceID' in edge_attributes:
-                    row_value.append(edge_attributes['References (PMID)'])
+                    row_value.append(edge_attributes['referenceID'])
                 else:
                     row_value.append('')
 
