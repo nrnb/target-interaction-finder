@@ -1,9 +1,7 @@
 # Test data
-source_xgmml/*.xgmml
-source_xgmml/*.p
-tests/test_DG
-tests/test_KCV
-tests/test_KJ
+source_xgmml/*
+tests/*
+runs/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -62,3 +60,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# temp files
+.*
