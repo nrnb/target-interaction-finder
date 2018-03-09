@@ -6,14 +6,14 @@ A component for the Genboree workbench.
 ## To install
 
 ```
-git clone https://github.com/ariutta/target-interaction-finder.git
+git clone https://github.com/nrnb/target-interaction-finder.git
 cd target-interaction-finder
 pip install -e .
 easy_install -U setuptools # Only if your setuptools is outdated
-pip install https://github.com/ariutta/networkxxgmml/zipball/master
+pip install https://github.com/nrnb/networkxxgmml/zipball/master
 ```
 
-This library by default expects the source XGMML network file(s) to be located in the ```source_xgmml``` directory. For example, to run the tests, you will need to download the three miRNA-protein mapping files used at Genboree into the ```source_xgmml``` directory: https://github.com/ariutta/target-interaction-finder/tree/master/source_xgmml
+This library by default expects the source XGMML network file(s) to be located in the ```source_xgmml``` directory. For example, to run the tests, you will need to download the three miRNA-protein mapping files used at Genboree into the ```source_xgmml``` directory: https://github.com/nrnb/target-interaction-finder/tree/master/source_xgmml
 
 ## To run
 
