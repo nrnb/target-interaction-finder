@@ -68,13 +68,13 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    #install_requires=['numpy==1.9.2', 'scipy==0.15.1', 'networkx==1.9.1', 'networkxgmml==0.1.3'],
+    #install_requires=['numpy==1.22.0', 'scipy==0.15.1', 'networkx==1.9.1', 'networkxgmml==0.1.3'],
     # The above is commented out, because the version of networkxgmml on PyPi throws an error
     # when parsing XGMML files from Genboree.
     # Until the pull request
     # https://github.com/informationsea/networkxxgmml/pull/1
     # is accepted, you need to install the dependencies without networkxgmml:
-    install_requires=['numpy==1.9.2', 'scipy==0.15.1', 'networkx==1.9.1'],
+    install_requires=['numpy==1.22.0', 'scipy==0.15.1', 'networkx==1.9.1'],
     # And then install the ariutta fork of networkxgmml like this:
     # pip install https://github.com/ariutta/networkxxgmml/zipball/master
 
